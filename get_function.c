@@ -10,17 +10,17 @@
 int (*get_function(char c))(va_list, int)
 {
 	forms specifics[] = {
-		{'c', print_ch},
+		{'c', print_char},
 		{'s', print_str},
-		{'d', print_int},
-		{'i', print_int},
-		{'u', print_unsignd},
-		{'o', print_octal},
+		{'d', print_digits},
+		{'i', print_digits},
+		{'u', print_unsigned},
+		{'o', print_octa},
 		{'x', print_hex},
-		{'X', print_heX},
+		{'X', print_hexi},
 		{'R', print_rot13},
-		{'b', print_b},
-		{'S', print_Str}
+		{'b', print_bina},
+		{'S', print_string}
 	};
 
 	int i;

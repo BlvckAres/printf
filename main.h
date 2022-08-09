@@ -15,11 +15,8 @@ typedef struct directives
 	char speci;
 	int (*fspeci)(va_list, int);
 } forms;
-void print_buffer(char buffer[], int *buff_ind);
+
 int _printf(const char *format, ...);
-void print_buffer(char buffer[], int *buff_ind);
-
-
 int _putchar(char a);
 int _printf(const char *format, ...);
 int (*get_function(char c))(va_list, int);

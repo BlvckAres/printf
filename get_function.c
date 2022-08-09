@@ -25,11 +25,11 @@ int (*get_function(char c))(va_list, int)
 
 	int i;
 
-	for (i = 0; specifics[i].spec; i++)
+	for (i = 0; specifics[i].speci; i++)
 	{
-		if (c == specifics[i].spec)
+		if (c == specifics[i].speci)
 		{
-			return (specifics[i].fspec);
+			return (specifics[i].fspeci);
 		}
 	}
 

@@ -3,7 +3,7 @@
 
 #include <stdarg.h>
 #include <stdlib.h>
-
+#include <unistd.h>
 /**
   *struct directives - holds fromat specifiers and their functions.
   *@speci: char.
@@ -17,6 +17,8 @@ typedef struct directives
 } forms;
 
 int _printf(const char *format, ...);
+int print_char(va_list arguments, char *buff, unsigned int abuf);
+int print_str(va_list arguments, char *buff, unsigned int abuf);
 int _putchar(char a);
 int _printf(const char *format, ...);
 int (*get_function(char c))(va_list, int);

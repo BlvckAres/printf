@@ -9,15 +9,13 @@ void pri_buffer(char buffer[], int *b_index);
  */
 
 int _printf(const char *sett, ...)
-
-int _printf(const char *sett, ...)
 {
 	int y, script = 0, script_c = 0;
 	int flags, width, precision, size, b_index = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
 
-	if (sett == '\0')
+	if (sett == NULL)
 		return (-1);
 
 	va_start(list, sett);

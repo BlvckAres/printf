@@ -10,7 +10,7 @@ void pri_buffer(char buffer[], int *b_index);
 
 int _printf(const char *sett, ...)
 {
-	int y, script = 0, script_c = 0;
+	int y, scrpt = 0, scrpt_c = 0;
 	int flags, width, precision, size, b_index = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
@@ -28,7 +28,7 @@ int _printf(const char *sett, ...)
 			if (b_index == BUFF_SIZE)
 				pri_buffer(buffer, &b_index);
 			/* write(1, &sett[y], 1);*/
-			script_c++;
+			scrpt_c++;
 		}
 		else
 		{
@@ -38,11 +38,11 @@ int _printf(const char *sett, ...)
 			precision = find_precision(sett, &y, list);
 			size = find_size(sett, &y);
 			++y;
-			script = sort_print(sett, &y, list, buffer,
+			scrpt = sort_print(sett, &y, list, buffer,
 				flags, width, precision, size);
-			if (script == -1)
+			if (scrpt == -1)
 				return (-1);
-			script_c += script;
+			scrpt_c += scrpt;
 		}
 	}
 
@@ -50,7 +50,7 @@ int _printf(const char *sett, ...)
 
 	va_end(list);
 
-	return (script_c);
+	return (scrpt_c);
 }
 /**
  * pri_buffer - prints the contents of the buffer if it exist

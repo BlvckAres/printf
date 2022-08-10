@@ -15,6 +15,7 @@
 int sort_print_char(char chrs, char buffer[],
 	int flags, int width, int precision, int size)
 { /* char is stored at left and paddind at buffer's right */
+
 	int y = 0;
 	char lado = ' ';
 
@@ -46,10 +47,10 @@ int sort_print_char(char chrs, char buffer[],
 
 /************************* WRITE NUMBER *************************/
 /**
- * print_digit - prints a string
+ * print_numba - prints a str
  * @is_neg: list of arguments
  * @ind: char types.
- * @buffer: Buffer array to handle print
+ * @buffer: buffer array to handle print
  * @flags: calcs active flags
  * @width: find width.
  * @precision: precision specifier
@@ -57,7 +58,7 @@ int sort_print_char(char chrs, char buffer[],
  *
  * Return: Number of chars printed.
  */
-int print_digit(int is_neg, int ind, char buffer[],
+int print_numba(int is_neg, int ind, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int length = BUFF_SIZE - ind - 1;
@@ -79,8 +80,8 @@ int print_digit(int is_neg, int ind, char buffer[],
 }
 
 /**
- * prints_num - prints a number using a bufffer
- * @ind: index at which the number starts on the buffer
+ * write_num - prints a number using a bufffer
+ * @idex: index at which the number starts on the buffer
  * @buffer: buffer
  * @flags: flags
  * @width: width
@@ -91,20 +92,20 @@ int print_digit(int is_neg, int ind, char buffer[],
  *
  * Return: Number of printed chars.
  */
-int print_num(int ind, char buffer[],
+int write_num(int idex, char buffer[],
 	int flags, int width, int prec,
 	int length, char lado, char plus_c)
 {
 	int y, lado_start = 1;
 
-	if (prec == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0' && width == 0)
+	if (prec == 0 && idex == BUFF_SIZE - 2 && buffer[idex] == '0' && width == 0)
 		return (0); /* printf(".0d", 0)  no char is printed */
-	if (prec == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
-		buffer[ind] = lado = ' '; /* width is displayed with padding ' ' */
+	if (prec == 0 && idex == BUFF_SIZE - 2 && buffer[idex] == '0')
+		buffer[idex] = lado = ' '; /* width is displayed with padding ' ' */
 	if (prec > 0 && prec < length)
 		lado = ' ';
 	while (prec > length)
-		buffer[--ind] = '0', length++;
+		buffer[--idex] = '0', length++;
 	if (plus_c != 0)
 		length++;
 	if (width > length)
@@ -115,7 +116,7 @@ int print_num(int ind, char buffer[],
 		if (flags & F_MINUS && lado == ' ')/* Asign extra char to left of buffer */
 		{
 			if (plus_c)
-				buffer[--ind] = plus_c;
+				buffer[--idex] = plus_c;
 			return (write(1, &buffer[ind], length) + write(1, &buffer[1], y - 1));
 		}
 		else if (!(flags & F_MINUS) && lado == ' ')/* extra char to left of buff */
@@ -129,18 +130,18 @@ int print_num(int ind, char buffer[],
 			if (plus_c)
 				buffer[--lado_start] = plus_c;
 			return (write(1, &buffer[lado_start], y - lado_start) +
-				write(1, &buffer[ind], length - (1 - lado_start)));
+				write(1, &buffer[idex], length - (1 - lado_start)));
 		}
 	}
 	if (plus_c)
-		buffer[--ind] = plus_c;
-	return (write(1, &buffer[ind], length));
+		buffer[--idex] = plus_c;
+	return (write(1, &buffer[idex], length));
 }
 
 /**
  * print_unsgnd - print an unsigned number
  * @is_neg: number indicating if the num is neg
- * @ind: index at which the number starts in the buffer
+ * @idex: index at which the number starts in the buffer
  * @buffer: array of chars
  * @flags: flags specifiers
  * @width: width specifier
@@ -149,18 +150,18 @@ int print_num(int ind, char buffer[],
  *
  * Return: number of written chars.
  */
-int print_unsgnd(int is_neg, int ind,
+int print_unsgnd(int is_neg, int idex,
 	char buffer[],
 	int flags, int width, int precision, int size)
 {
 	/* The number is stored at the bufer's right and starts at position y */
-	int length = BUFF_SIZE - ind - 1, y = 0;
-	char padd = ' ';
+	int length = BUFF_SIZE - idex - 1, y = 0;
+	char lado = ' ';
 
 	UNUSED(is_neg);
 	UNUSED(size);
 
-	if (precision == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
+	if (precision == 0 && idex == BUFF_SIZE - 2 && buffer[idex] == '0')
 		return (0); /* printf(".0d", 0)  no char is printed */
 
 	if (precision > 0 && precision < length)
@@ -168,7 +169,7 @@ int print_unsgnd(int is_neg, int ind,
 
 	while (precision > length)
 	{
-		buffer[--ind] = '0';
+		buffer[--idex] = '0';
 		length++;
 	}
 
@@ -184,15 +185,15 @@ int print_unsgnd(int is_neg, int ind,
 
 		if (flags & F_MINUS) /* Asign extra char to left of buffer [buffer>padd]*/
 		{
-			return (write(1, &buffer[ind], length) + write(1, &buffer[0], y));
+			return (write(1, &buffer[idex], length) + write(1, &buffer[0], y));
 		}
 		else /* Asign extra char to left of padding [padd>buffer]*/
 		{
-			return (write(1, &buffer[0], y) + write(1, &buffer[ind], length));
+			return (write(1, &buffer[0], y) + write(1, &buffer[idex], length));
 		}
 	}
 
-	return (write(1, &buffer[ind], length));
+	return (write(1, &buffer[idex], length));
 }
 
 /**
@@ -216,7 +217,7 @@ int prints_pointer(char buffer[], int index, int length,
 	if (width > length)
 	{
 		for (y = 3; y < width - length + 3; y++)
-			buffer[i] = lado;
+			buffer[y] = lado;
 		buffer[y] = '\0';
 		if (flags & F_MINUS && lado == ' ')/* Asign extra char to left of buffer */
 		{

@@ -40,7 +40,7 @@ struct set
 typedef struct set set_t;
 
 int _printf(const char *sett, ...);
-int handle_print(const char *sett, int *y,
+int print_sort(const char *set, int *ind,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/

@@ -38,7 +38,7 @@ int _printf(const char *sett, ...)
 			precision = find_precision(sett, &y, list);
 			size = find_size(sett, &y);
 			++y;
-			script = handle_print(sett, &y, list, buffer,
+			script = sort_print(sett, &y, list, buffer,
 				flags, width, precision, size);
 			if (script == -1)
 				return (-1);

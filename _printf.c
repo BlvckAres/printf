@@ -7,19 +7,17 @@ void pri_buffer(char buffer[], int *b_index);
  * @sett: format.
  * Return: Printed chars.
  */
-<<<<<<< HEAD
-int _printf(const char *sett, ...)
-=======
 
-int _printf(const char *format, ...)
->>>>>>> bd2734517280d99c523d595c1f2996eee708471e
+int _printf(const char *sett, ...)
+
+int _printf(const char *sett, ...)
 {
 	int y, script = 0, script_c = 0;
-	int flags, width, precision, size, buff_ix = 0;
+	int flags, width, precision, size, b_index = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
 
-	if (sett == NULL)
+	if (sett == '\0')
 		return (-1);
 
 	va_start(list, sett);

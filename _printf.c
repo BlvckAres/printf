@@ -7,7 +7,12 @@ void pri_buffer(char buffer[], int *b_index);
  * @sett: format.
  * Return: Printed chars.
  */
+<<<<<<< HEAD
 int _printf(const char *sett, ...)
+=======
+
+int _printf(const char *format, ...)
+>>>>>>> bd2734517280d99c523d595c1f2996eee708471e
 {
 	int y, script = 0, script_c = 0;
 	int flags, width, precision, size, buff_ix = 0;
@@ -51,7 +56,6 @@ int _printf(const char *sett, ...)
 
 	return (script_c);
 }
-
 /**
  * pri_buffer - prints the contents of the buffer if it exist
  * @buffer: array of chars

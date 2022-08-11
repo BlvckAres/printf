@@ -1,4 +1,3 @@
-/* utilities */
 #include "main.h"
 
 /**
@@ -18,7 +17,7 @@ int is_printable(char c)
 /**
  * append_hexa_code - Append ascci in hexadecimal code to buffer
  * @buffer: Array of chars.
- * @i: Index at which to start appending.
+ * @i: digit at which to start appending.
  * @ascii_code: ASSCI CODE.
  * Return: Always 3
  */
@@ -39,12 +38,12 @@ int append_hexa_code(char ascii_code, char buffer[], int i)
 }
 
 /**
- * is_numb - Verifies if a char is a digit
+ * is_digit - Verifies if a char is a digit
  * @c: Char to be evaluated
  *
  * Return: 1 if c is a digit, 0 otherwise
  */
-int is_numb(char c)
+int is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
@@ -53,35 +52,35 @@ int is_numb(char c)
 }
 
 /**
- *convert_sz_num - Casts a number to the specified size
- * @digt: Number to be casted.
- * @size: Number indicating the type to be casted.
+ * cnvert_sz_numbr - Casts a number to the specified size
+ * @num: Number to be casted.
+ * @size: Number ndxicating the type to be casted.
  *
  * Return: Casted value of num
  */
-long int convert_sz_num(long int digt, int size)
+long int cnvert_sz_numbr(long int num, int size)
 {
 	if (size == S_LONG)
-		return (digt);
+		return (num);
 	else if (size == S_SHORT)
-		return ((short)digt);
+		return ((short)num);
 
-	return ((int)digt);
+	return ((int)num);
 }
 
 /**
- * convert_sz_unsgnd - Casts a number to the specified size
- * @digt: Number to be casted
- * @size: Number indicating the type to be casted
+ * cnvert_sz_unsgnd - Casts a number to the specified size
+ * @num: Number to be casted
+ * @size: Number ndxicating the type to be casted
  *
  * Return: Casted value of num
  */
-long int convert_sz_unsgnd(unsigned long int digt, int size)
+long int cnvert_sz_unsgnd(unsigned long int num, int size)
 {
 	if (size == S_LONG)
-		return (digt);
+		return (num);
 	else if (size == S_SHORT)
-		return ((unsigned short)digt);
+		return ((unsigned short)num);
 
-	return ((unsigned int)digt);
+	return ((unsigned int)num);
 }

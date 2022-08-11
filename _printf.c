@@ -1,6 +1,6 @@
 #include "main.h"
 
-void publsh_buffa(char buffer[], int *b_index);
+void print_buffer(char buffer[], int *buff_ndx);
 
 /**
  * _printf - Printf function
@@ -10,8 +10,8 @@ void publsh_buffa(char buffer[], int *b_index);
 
 int _printf(const char *sett, ...)
 {
-	int i, scrpt = 0, scrpt_chars = 0;
-	int flags, width, precision, size, b_index = 0;
+	int i, printed = 0, printed_chars = 0;
+	int flags, width, precision, size, buff_ndx = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
 
@@ -24,43 +24,43 @@ int _printf(const char *sett, ...)
 	{
 		if (sett[i] != '%')
 		{
-			buffer[b_index++] = sett[i];
-			if (b_index == BUFF_SIZE)
-				publsh_buffa(buffer, &b_index);
+			buffer[buff_ndx++] = sett[i];
+			if (buff_ndx == BUFF_SIZE)
+				print_buffer(buffer, &buff_ndx);
 			/* write(1, &sett[i], 1);*/
-			scrpt_chars++;
+			printed_chars++;
 		}
 		else
 		{
-			publsh_buffa(buffer, &b_index);
+			print_buffer(buffer, &buff_ndx);
 			flags = find_flags(sett, &i);
 			width = find_width(sett, &i, list);
 			precision = find_precision(sett, &i, list);
 			size = find_size(sett, &i);
 			++i;
-			scrpt = handle_print(sett, &i, list, buffer,
+			printed = sort_prnt(sett, &i, list, buffer,
 				flags, width, precision, size);
-			if (scrpt == -1)
+			if (printed == -1)
 				return (-1);
-			scrpt_chars += scrpt;
+			printed_chars += printed;
 		}
 	}
 
-	publsh_buffa(buffer, &b_index);
+	print_buffer(buffer, &buff_ndx);
 
 	va_end(list);
 
-	return (scrpt_chars);
+	return (printed_chars);
 }
 /**
- * publsh_buffa - Prints the contents of the buffer if it exist
+ * print_buffer - Prints the contents of the buffer if it exist
  * @buffer: Array of chars
- * @b_index: Index at which to add next char, represents the length.
+ * @buff_ndx: digit at which to add next char, represents the length.
  */
-void publsh_buffa(char buffer[], int *b_index)
+void print_buffer(char buffer[], int *buff_ndx)
 {
-	if (*b_index > 0)
-		write(1, &buffer[0], *b_index);
+	if (*buff_ndx > 0)
+		write(1, &buffer[0], *buff_ndx);
 
-	*b_index = 0;
+	*buff_ndx = 0;
 }

@@ -24,3 +24,4 @@ int find_size(const char *sett, int *i)
 
 	return (size);
 }
+

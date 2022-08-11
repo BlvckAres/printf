@@ -3,7 +3,7 @@
 /****************** PRINT POINTER ******************/
 /**
  * print_pointer - Prints the value of a pointer variable
- * @types: list a of arguments
+ * @arrgs: list a of arguments
  * @buffer: Buffer array to handle print
  * @flags:  calcs active flags
  * @width: find width
@@ -11,14 +11,14 @@
  * @size: Size specifier
  * Return: Number of chars printed.
  */
-int print_pointer(va_list types, char buffer[],
+int print_pointer(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char pluss_c = 0, lado = ' ';
 	int ndx = BUFF_SIZE - 2, length = 2, lado_start = 1; /* length=2, for '0x' */
 	unsigned long num_addrs;
 	char map_to[] = "0123456789abcdef";
-	void *addrs = va_arg(types, void *);
+	void *addrs = va_arg(arrgs, void *);
 
 	UNUSED(width);
 	UNUSED(size);
@@ -55,7 +55,7 @@ int print_pointer(va_list types, char buffer[],
 /************************* PRINT NON PRINTABLE *************************/
 /**
  * print_non_printable - Prints ascii codes in hexa of non printable chars
- * @types: lista of arguments
+ * @arrgs: lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  calcs active flags
  * @width: find width
@@ -63,11 +63,11 @@ int print_pointer(va_list types, char buffer[],
  * @size: Size specifier
  * Return: Number of chars printed
  */
-int print_non_printable(va_list types, char buffer[],
+int print_non_printable(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i = 0, offset = 0;
-	char *str = va_arg(types, char *);
+	char *str = va_arg(arrgs, char *);
 
 	UNUSED(flags);
 	UNUSED(width);
@@ -95,7 +95,7 @@ int print_non_printable(va_list types, char buffer[],
 /************************* PRINT REVERSE *************************/
 /**
  * print_reverse - Prints reverse string.
- * @types: lista of arguments
+ * @arrgs: lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  calcs active flags
  * @width: find width
@@ -104,7 +104,7 @@ int print_non_printable(va_list types, char buffer[],
  * Return: Numbers of chars printed
  */
 
-int print_reverse(va_list types, char buffer[],
+int print_reverse(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char *str;
@@ -115,7 +115,7 @@ int print_reverse(va_list types, char buffer[],
 	UNUSED(width);
 	UNUSED(size);
 
-	str = va_arg(types, char *);
+	str = va_arg(arrgs, char *);
 
 	if (str == NULL)
 	{
@@ -138,7 +138,7 @@ int print_reverse(va_list types, char buffer[],
 /************************* PRINT A STRING IN ROT13 *************************/
 /**
  * print_rot13string - Print a string in rot13.
- * @types: lista of arguments
+ * @arrgs: lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  calcs active flags
  * @width: find width
@@ -146,7 +146,7 @@ int print_reverse(va_list types, char buffer[],
  * @size: Size specifier
  * Return: Numbers of chars printed
  */
-int print_rot13string(va_list types, char buffer[],
+int print_rot13string(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char x;
@@ -156,7 +156,7 @@ int print_rot13string(va_list types, char buffer[],
 	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	str = va_arg(types, char *);
+	str = va_arg(arrgs, char *);
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);

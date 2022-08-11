@@ -32,12 +32,12 @@ struct typ
 
 
 /**
- * typedef struct typ typ_t - Struct op
+ * arrgdef struct typ typ_t - Struct op
  *
  * @typ: The sett.
  * @fm_t: The function associated.
  */
-typedef struct typ typ_t;
+arrgdef struct typ typ_t;
 
 int _printf(const char *sett, ...);
 int sort_prnt(const char *typ, int *i,
@@ -46,36 +46,36 @@ va_list list, char buffer[], int flags, int width, int precision, int size);
 /****************** FUNCTIONS ******************/
 
 /* Funtions to print chars and strings */
-int print_char(va_list types, char buffer[],
+int print_char(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
-int print_string(va_list types, char buffer[],
+int print_string(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
-int print_percent(va_list types, char buffer[],
+int print_percent(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Functions to print numbers */
-int print_int(va_list types, char buffer[],
+int print_int(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
-int print_binary(va_list types, char buffer[],
+int print_binary(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
-int print_unsigned(va_list types, char buffer[],
+int print_unsigned(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
-int print_octal(va_list types, char buffer[],
+int print_octal(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
-int print_hexadecimal(va_list types, char buffer[],
+int print_hexadecimal(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
-int print_hexa_upper(va_list types, char buffer[],
+int print_hexa_upper(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
 
-int print_hexa(va_list types, char map_to[],
+int print_hexa(va_list arrgs, char map_to[],
 char buffer[], int flags, char flag_ch, int width, int precision, int size);
 
 /* Function to print non printable characters */
-int print_non_printable(va_list types, char buffer[],
+int print_non_printable(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Funcion to print memory address */
-int print_pointer(va_list types, char buffer[],
+int print_pointer(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Funciotns to handle other specifiers */
@@ -85,11 +85,11 @@ int find_precision(const char *sett, int *i, va_list list);
 int find_size(const char *sett, int *i);
 
 /*Function to print string in reverse*/
-int print_reverse(va_list types, char buffer[],
+int print_reverse(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
 
 /*Function to print a string in rot 13*/
-int print_rot13string(va_list types, char buffer[],
+int print_rot13string(va_list arrgs, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* width handler */

@@ -54,7 +54,7 @@ int is_digit(char c)
 /**
  * cnvert_sz_numbr - Casts a number to the specified size
  * @num: Number to be casted.
- * @size: Number ndxicating the type to be casted.
+ * @size: Number ndxicating the arrg to be casted.
  *
  * Return: Casted value of num
  */
@@ -71,7 +71,7 @@ long int cnvert_sz_numbr(long int num, int size)
 /**
  * cnvert_sz_unsgnd - Casts a number to the specified size
  * @num: Number to be casted
- * @size: Number ndxicating the type to be casted
+ * @size: Number ndxicating the arrg to be casted
  *
  * Return: Casted value of num
  */

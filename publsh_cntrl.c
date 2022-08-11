@@ -1,7 +1,7 @@
 #include "main.h"
 /**
 * sort_publsh_chr - Prints a string
-* @c: char types.
+* @c: char arrgs.
 * @buffer: Buffer array to handle print
 * @flags:  calcs active flags.
 * @width: find width.
@@ -43,7 +43,7 @@ int sort_publsh_chr(char c, char buffer[],
 /**
 * publsh_numba - Prints a string
 * @is_neg: lista of arguments
-* @ndx: char types.
+* @ndx: char arrgs.
 * @buffer: Buffer array to handle print
 * @flags:  calcs active flags
 * @width: find width.

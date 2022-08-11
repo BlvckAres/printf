@@ -39,7 +39,7 @@ int _printf(const char *sett, ...)
 			precision = find_precision(sett, &y, list);
 			size = find_size(sett, &y);
 			++y;
-			scrpt = sort_print(sett, &i, list, buffer,
+			scrpt = sort_print(sett, &y, list, buffer,
 				flags, width, precision, size);
 			if (scrpt == -1)
 				return (-1);

@@ -14,14 +14,15 @@
 int manage_writ_chr(char crs, char buffer[],
 	int flags, int width, int precision, int size)
 { /* char is stored at left and ladoind at buffer's right */
+
 	int y = 0;
-	char lado= ' ';
+	char lado = ' ';
 
 	UNUSED(precision);
 	UNUSED(size);
 
 	if (flags & F_ZERO)
-		lado= '0';
+		lado = '0';
 
 	buffer[y++] = crs;
 	buffer[y] = '\0';
@@ -57,12 +58,12 @@ int publish_numba(int is_negative, int idex, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int length = BUFF_SIZE - idex - 1;
-	char lado= ' ', plus_ch = 0;
+	char lado = ' ', plus_ch = 0;
 
 	UNUSED(size);
 
 	if ((flags & F_ZERO) && !(flags & F_MINUS))
-		lado= '0';
+		lado = '0';
 	if (is_negative)
 		plus_ch = '-';
 	else if (flags & F_PLUS)
@@ -96,9 +97,9 @@ int publish_num(int idex, char buffer[],
 	if (prec == 0 && idex == BUFF_SIZE - 2 && buffer[idex] == '0' && width == 0)
 		return (0); /* printf(".0d", 0)  no char is printed */
 	if (prec == 0 && idex == BUFF_SIZE - 2 && buffer[idex] == '0')
-		buffer[idex] = lado= ' '; /* width is displayed with ladoing ' ' */
+		buffer[idex] = lado = ' '; /* width is displayed with ladoing ' ' */
 	if (prec > 0 && prec < length)
-		lado= ' ';
+		lado = ' ';
 	while (prec > length)
 		buffer[--idex] = '0', length++;
 	if (plus_c != 0)
@@ -108,19 +109,19 @@ int publish_num(int idex, char buffer[],
 		for (y = 1; y < width - length + 1; y++)
 			buffer[y] = lado;
 		buffer[y] = '\0';
-		if (flags & F_MINUS && lado== ' ')/* Asign plus char to left of buffer */
+		if (flags & F_MINUS && lado == ' ')/* Asign plus char to left of buffer */
 		{
 			if (plus_c)
 				buffer[--idex] = plus_c;
 			return (write(1, &buffer[idex], length) + write(1, &buffer[1], y - 1));
 		}
-		else if (!(flags & F_MINUS) && lado== ' ')/* plus char to left of buff */
+		else if (!(flags & F_MINUS) && lado == ' ')/* plus char to left of buff */
 		{
 			if (plus_c)
 				buffer[--idex] = plus_c;
 			return (write(1, &buffer[1], y - 1) + write(1, &buffer[idex], length));
 		}
-		else if (!(flags & F_MINUS) && lado== '0')/* plus char to left of lado*/
+		else if (!(flags & F_MINUS) && lado == '0')/* plus char to left of lado*/
 		{
 			if (plus_c)
 				buffer[--lado_start] = plus_c;
@@ -151,7 +152,7 @@ int publish_unsgnd(int is_negative, int idex,
 {
 	/* The number is stored at the bufer's right and starts at position i */
 	int length = BUFF_SIZE - idex - 1, y = 0;
-	char lado= ' ';
+	char lado = ' ';
 
 	UNUSED(is_negative);
 	UNUSED(size);
@@ -160,7 +161,7 @@ int publish_unsgnd(int is_negative, int idex,
 		return (0); /* printf(".0d", 0)  no char is printed */
 
 	if (precision > 0 && precision < length)
-		lado= ' ';
+		lado = ' ';
 
 	while (precision > length)
 	{
@@ -169,7 +170,7 @@ int publish_unsgnd(int is_negative, int idex,
 	}
 
 	if ((flags & F_ZERO) && !(flags & F_MINUS))
-		lado= '0';
+		lado = '0';
 
 	if (width > length)
 	{
@@ -214,7 +215,7 @@ int publish_pointer(char buffer[], int idex, int length,
 		for (y = 3; y < width - length + 3; y++)
 			buffer[y] = lado;
 		buffer[y] = '\0';
-		if (flags & F_MINUS && lado== ' ')/* Asign plus char to left of buffer */
+		if (flags & F_MINUS && lado == ' ')/* Asign plus char to left of buffer */
 		{
 			buffer[--idex] = 'x';
 			buffer[--idex] = '0';
@@ -222,7 +223,7 @@ int publish_pointer(char buffer[], int idex, int length,
 				buffer[--idex] = plus_c;
 			return (write(1, &buffer[idex], length) + write(1, &buffer[3], y - 3));
 		}
-		else if (!(flags & F_MINUS) && lado== ' ')/* plus char to left of buffer */
+		else if (!(flags & F_MINUS) && lado == ' ')/* plus char to left of buffer */
 		{
 			buffer[--idex] = 'x';
 			buffer[--idex] = '0';
@@ -230,7 +231,7 @@ int publish_pointer(char buffer[], int idex, int length,
 				buffer[--idex] = plus_c;
 			return (write(1, &buffer[3], y - 3) + write(1, &buffer[idex], length));
 		}
-		else if (!(flags & F_MINUS) && lado== '0')/* plus char to left of lado*/
+		else if (!(flags & F_MINUS) && lado == '0')/* plus char to left of lado*/
 		{
 			if (plus_c)
 				buffer[--lado_start] = plus_c;

@@ -15,7 +15,7 @@ int prints_point(va_list args, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char plus_c = 0, lado = ' ';
-	int index = BUFF_SIZE - 2, length = 2, lado_start = 1; /* length=2, for '0x' */
+	int index = BUFF_SIZE - 2, length = 2, lado_start = 1; /*length=2,for '0x' */
 	unsigned long n_address;
 	char map_to[] = "0123456789abcdef";
 	void *addrs = va_arg(args, void *);

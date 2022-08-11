@@ -1,1 +1,1 @@
-This is a printf group project Assignement with prinft files 333
+This is a printf collaboration  group project Assignement with functions 

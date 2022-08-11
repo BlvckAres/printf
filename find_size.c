@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * find_size - calcs the size to cast the argument
+ * find_size - Calculates the size to cast the argument
  * @sett: settted string in which to print the arguments
- * @y: List of arguments to be printed.
+ * @i: List of arguments to be printed.
  *
  * Return: Precision.
  */
-int find_size(const char *sett, int *y)
+int find_size(const char *sett, int *i)
 {
-	int preset = *y + 1;
+	int preset = *i + 1;
 	int size = 0;
 
 	if (sett[preset] == 'l')
@@ -18,9 +18,9 @@ int find_size(const char *sett, int *y)
 		size = S_SHORT;
 
 	if (size == 0)
-		*y = preset - 1;
+		*i = preset - 1;
 	else
-		*y = preset;
+		*i = preset;
 
 	return (size);
 }

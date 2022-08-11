@@ -32,12 +32,12 @@ struct typ
 
 
 /**
- * arrgdef struct typ typ_t - Struct op
+ * typedef struct typ typ_t - Struct op
  *
  * @typ: The sett.
  * @fm_t: The function associated.
  */
-arrgdef struct typ typ_t;
+typedef struct typ typ_t;
 
 int _printf(const char *sett, ...);
 int sort_prnt(const char *typ, int *i,

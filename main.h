@@ -40,7 +40,7 @@ struct set
 typedef struct set set_t;
 
 int _printf(const char *sett, ...);
-int print_sort(const char *set, int *ind,
+int sort_print(const char *set, int *ind,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
@@ -95,14 +95,14 @@ int print_rot13string(va_list args, char buffer[],
 /* width handler */
 int sort_print_char(char chrs, char buffer[],
 	int flags, int width, int precision, int size);
-int print_digit(int is_positive, int ind, char buffer[],
+int print_numba(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
-int print_num(int ind, char bff[], int flags, int width, int precision,
+int write_num(int ind, char bff[], int flags, int width, int precision,
 	int length, char lado, char plus_c);
-int prints_pointer(char buffer[], int index, int length,
+int prints_point(char buffer[], int index, int length,
 	int width, int flags, char lado, char plus_c, int lado_start);
 
-int write_unsgnd(int is_neg, int ind,
+int print_unsgnd(int is_neg, int idex,
 char buffer[],
 	int flags, int width, int precision, int size);
 

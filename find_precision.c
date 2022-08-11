@@ -13,7 +13,7 @@ int find_precision(const char *sett, int *y, va_list list)
 	int preset_i = *y + 1;
 	int precision = -1;
 
-	if (format[preset_i] != '.')
+	if (sett[preset_i] != '.')
 		return (precision);
 
 	precision = 0;

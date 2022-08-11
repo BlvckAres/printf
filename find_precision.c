@@ -2,32 +2,32 @@
 
 /**
  * find_precision - calcs the precision for printing
- * @sett: formatted string in which to print the arguments
- * @y: List of arguments to be printed.
+ * @sett: settted string in which to print the arguments
+ * @y: list of arguments to be printed.
  * @list: list of arguments.
  *
  * Return: Precision.
  */
-int find_precision(const char *sett, int *y, va_list list)
+int find_precision(const char *sett, int *i, va_list list)
 {
-	int preset_i = *y + 1;
+	int preset = *y + 1;
 	int precision = -1;
 
-	if (sett[preset_i] != '.')
+	if (sett[preset] != '.')
 		return (precision);
 
 	precision = 0;
 
-	for (preset_i += 1; sett[preset_i] != '\0'; preset_i++)
+	for (preset += 1; sett[preset] != '\0'; preset++)
 	{
-		if (is_numb(sett[preset_i]))
+		if (is_intiga(sett[preset]))
 		{
 			precision *= 10;
-			precision += sett[preset_i] - '0';
+			precision += sett[preset] - '0';
 		}
-		else if (sett[preset_i] == '*')
+		else if (sett[preset] == '*')
 		{
-			preset_i++;
+			preset++;
 			precision = va_arg(list, int);
 			break;
 		}
@@ -35,7 +35,7 @@ int find_precision(const char *sett, int *y, va_list list)
 			break;
 	}
 
-	*y = preset_i - 1;
+	*y = preset - 1;
 
 	return (precision);
 }

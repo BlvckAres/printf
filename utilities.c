@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * char_printable - evaluates if a char is printable
- * @chrs: char to be evaluated.
+ * is_printable - Evaluates if a char is printable
+ * @crs: char to be evaluated.
  *
- * Return: 1 if chrs is printable, 0 otherwise
+ * Return: 1 if c is printable, 0 otherwise
  */
-int char_print(char chrs)
+int is_printable(char crs)
 {
-	if (chrs >= 32 && chrs < 127)
+	if (crs >= 32 && crs < 127)
 		return (1);
 
 	return (0);
@@ -16,8 +16,8 @@ int char_print(char chrs)
 
 /**
  * append_hexa_code - Append ascci in hexadecimal code to buffer
- * @buffer: array of chars.
- * @y: index at which to start appending.
+ * @buffer: Array of chars.
+ * @y: Index at which to start appending.
  * @ascii_code: ASSCI CODE.
  * Return: Always 3
  */
@@ -38,49 +38,49 @@ int append_hexa_code(char ascii_code, char buffer[], int y)
 }
 
 /**
- * is_num - checks if a char is a number
- * @chrs: char to be evaluated
+ * is_intiga - Verifies if a char is a digit
+ * @crs: Char to be evaluated
  *
- * Return: 1 if chrs is a digit, 0 otherwise
+ * Return: 1 if c is a digit, 0 otherwise
  */
-int is_num(char chrs)
+int is_intiga(char crs)
 {
-	if (chrs >= '0' && chrs <= '9')
+	if (crs >= '0' && crs <= '9')
 		return (1);
 
 	return (0);
 }
 
 /**
- * convert_size_number - casts a number to the specified size
- * @digt: digit to be casted.
- * @size: digit indicating the type to be casted.
+ * convert_sz_numba - casts a number to the specified size
+ * @num: Number to be casted.
+ * @size: Number indicating the type to be casted.
  *
- * Return: Casted value of digit
+ * Return: Casted value of num
  */
-long int convert_size_number(long int digt, int size)
+long int convert_sz_numba(long int num, int size)
 {
 	if (size == S_LONG)
-		return (digt);
+		return (num);
 	else if (size == S_SHORT)
-		return ((short)digt);
+		return ((short)num);
 
-	return ((int)digt);
+	return ((int)num);
 }
 
 /**
- * convert_size_unsgnd - casts a number to the specified size
- * @digt: digit to be casted
- * @size: digit indicating the type to be casted
+ * convert_sz_unsgnd - casts a number to the specified size
+ * @num: Number to be casted
+ * @size: Number indicating the type to be casted
  *
- * Return: Casted value of digt
+ * Return: Casted value of num
  */
-long int convert_size_unsgnd(unsigned long int digt, int size)
+long int convert_sz_unsgnd(unsigned long int num, int size)
 {
 	if (size == S_LONG)
-		return (digt);
+		return (num);
 	else if (size == S_SHORT)
-		return ((unsigned short)digt);
+		return ((unsigned short)num);
 
-	return ((unsigned int)digt);
+	return ((unsigned int)num);
 }

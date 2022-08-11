@@ -1,16 +1,17 @@
+/* _putchar */
 #include "main.h"
 
-void pri_buffer(char buffer[], int *b_index);
+void print_buffer(char buffer[], int *b_index);
 
 /**
- * _printf - printf function
- * @sett: format.
- * Return: Printed chars.
+ * _printf - Printf function
+ * @sett: sett.
+ * Return: scrpt chrs.
  */
 
 int _printf(const char *sett, ...)
 {
-	int y, scrpt = 0, scrpt_c = 0;
+	int y, scrpt = 0, scrpt_chrs = 0;
 	int flags, width, precision, size, b_index = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
@@ -26,38 +27,38 @@ int _printf(const char *sett, ...)
 		{
 			buffer[b_index++] = sett[y];
 			if (b_index == BUFF_SIZE)
-				pri_buffer(buffer, &b_index);
+				print_buffer(buffer, &b_index);
 			/* write(1, &sett[y], 1);*/
-			scrpt_c++;
+			scrpt_chrs++;
 		}
 		else
 		{
-			pri_buffer(buffer, &b_index);
+			print_buffer(buffer, &b_index);
 			flags = find_flags(sett, &y);
 			width = find_width(sett, &y, list);
 			precision = find_precision(sett, &y, list);
 			size = find_size(sett, &y);
 			++y;
-			scrpt = sort_print(sett, &y, list, buffer,
+			scrpt = sort_print(sett, &i, list, buffer,
 				flags, width, precision, size);
 			if (scrpt == -1)
 				return (-1);
-			scrpt_c += scrpt;
+			scrpt_chrs += scrpt;
 		}
 	}
 
-	pri_buffer(buffer, &b_index);
+	print_buffer(buffer, &b_index);
 
 	va_end(list);
 
-	return (scrpt_c);
+	return (scrpt_chrs);
 }
 /**
- * pri_buffer - prints the contents of the buffer if it exist
- * @buffer: array of chars
- * @b_index: index at which to add next char, represents the length.
+ * print_buffer - Prints the contents of the buffer if it exist
+ * @buffer: Array of chrs
+ * @b_index: indexex at which to add next char, represents the length.
  */
-void pri_buffer(char buffer[], int *b_index)
+void print_buffer(char buffer[], int *b_index)
 {
 	if (*b_index > 0)
 		write(1, &buffer[0], *b_index);

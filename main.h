@@ -35,83 +35,83 @@ struct set
  * typedef struct set set_t - Struct op
  *
  * @set: The format.
- * @se_t: The function associated.
+ * @fm_t: The function associated.
  */
 typedef struct set set_t;
 
-int _printf(const char *sett, ...);
-int sort_print(const char *set, int *ind,
+int _printf(const char *format, ...);
+int sort_print(const char *set, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
 
 /* Funtions to print chars and strings */
-int print_char(va_list args, char buffer[],
+int print_char(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_string(va_list args, char buffer[],
+int print_string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_percent(va_list args, char buffer[],
+int print_percent(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Functions to print numbers */
-int print_int(va_list args, char buffer[],
+int print_int(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_binary(va_list args, char buffer[],
+int print_binary(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_unsigned(va_list args, char buffer[],
+int print_unsigned(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_octal(va_list args, char buffer[],
+int print_octal(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_hexadecimal(va_list args, char buffer[],
+int print_hexadecimal(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_hexa_upper(va_list args, char buffer[],
+int print_hexa_upper(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
-int print_hexa(va_list args, char map_to[],
+int print_hexa(va_list types, char map_to[],
 char buffer[], int flags, char flag_ch, int width, int precision, int size);
 
 /* Function to print non printable characters */
-int print_non_printable(va_list args, char buffer[],
+int print_non_printable(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Funcion to print memory address */
-int print_pointer(va_list args, char buffer[],
+int prints_point(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Funciotns to handle other specifiers */
-int find_flags(const char *sett, int *y);
-int find_width(const char *sett, int *y, va_list list);
-int find_precision(const char *sett, int *y, va_list list);
-int find_size(const char *sett, int *y);
+int find_flags(const char *format, int *i);
+int find_width(const char *format, int *i, va_list list);
+int find_precision(const char *format, int *i, va_list list);
+int find_size(const char *format, int *i);
 
 /*Function to print string in reverse*/
-int print_reverse(va_list args, char buffer[],
+int print_reverse(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /*Function to print a string in rot 13*/
-int print_rot13string(va_list args, char buffer[],
+int print_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* width handler */
-int sort_print_char(char chrs, char buffer[],
+int manage_writ_chr(char c, char buffer[],
 	int flags, int width, int precision, int size);
-int print_numba(int is_positive, int ind, char buffer[],
+int publish_numba(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
-int write_num(int ind, char bff[], int flags, int width, int precision,
-	int length, char lado, char plus_c);
-int prints_point(char buffer[], int index, int length,
-	int width, int flags, char lado, char plus_c, int lado_start);
+int publish_num(int ind, char bff[], int flags, int width, int precision,
+	int length, char padd, char extra_c);
+int publish_pointer(char buffer[], int ind, int length,
+	int width, int flags, char padd, char extra_c, int padd_start);
 
-int print_unsgnd(int is_neg, int idex,
+int publish_unsgnd(int is_negative, int ind,
 char buffer[],
 	int flags, int width, int precision, int size);
 
-/****************** utilities ******************/
-int char_print(char);
+/****************** UTILS ******************/
+int is_printable(char);
 int append_hexa_code(char, char[], int);
-int is_num(char);
+int is_intiga(char);
 
-long int convert_size_number(long int digt, int size);
-long int convert_size_unsgnd(unsigned long int digt, int size);
+long int convert_sz_numba(long int num, int size);
+long int convert_sz_unsgnd(unsigned long int num, int size);
 
-#endif /* MAIN_H */
+#endif

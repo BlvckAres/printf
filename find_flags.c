@@ -1,34 +1,34 @@
 #include "main.h"
 
 /**
- * find_flags - calculates active flags
- * @sett: formatted string in which to print the args
- * @y: get a parameter.
- * Return: Flags:
+ * find_flags - calcs active flags
+ * @sett: settted string in which to print the arguments
+ * @y: take a parameter.
+ * Return: flags:
  */
 int find_flags(const char *sett, int *y)
 {
 	/* - + 0 # ' ' */
 	/* 1 2 4 8  16 */
-	int m, preset_i;
+	int m, preset;
 	int flags = 0;
-	const char FLAGS_CH[] = {'-', '+', '0', '#', ' ', '\0'};
-	const int FLAGS_ARR[] = {F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0};
+	const char flags_CH[] = {'-', '+', '0', '#', ' ', '\0'};
+	const int flags_ARR[] = {F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0};
 
-	for (preset_i = *y + 1; sett[preset_i] != '\0'; preset_i++)
+	for (preset = *y + 1; sett[preset] != '\0'; preset++)
 	{
-		for (m = 0; FLAGS_CH[m] != '\0'; m++)
-			if (sett[preset_i] == FLAGS_CH[m])
+		for (m = 0; flags_CH[m] != '\0'; m++)
+			if (sett[preset] == flags_CH[m])
 			{
-				flags |= FLAGS_ARR[m];
+				flags |= flags_ARR[m];
 				break;
 			}
 
-		if (FLAGS_CH[m] == 0)
+		if (flags_CH[m] == 0)
 			break;
 	}
 
-	*y = preset_i - 1;
+	*y = preset - 1;
 
 	return (flags);
 }

@@ -1,22 +1,22 @@
 #include "main.h"
 
 /****************** PRINT POINTER ******************/
- /**
- * print_pointer - a function that prints the value of a pointer variable
- * @args: list a of arguments
- * @buffer: buffer array to handle print
- * @flags:  calcs active flags
- * @width: returns width
- * @precision: precision spec
- * @size: size specifier
- * Return: Number of chars printed.
+/**
+ * prints_point - Prints the value of a pointer variable
+ * @args: List a of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  calc active flags
+ * @width: find width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chrs printed.
  */
-int print_pointer(va_list args, char buffer[],
+int prints_point(va_list args, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char plus_c = 0, lado = ' ';
-	int ind = BUFF_SIZE - 2, length = 2, lado_start = 1; /* length=2, for '0x' */
-	unsigned long n_addrs;
+	int index = BUFF_SIZE - 2, length = 2, lado_start = 1; /* length=2, for '0x' */
+	unsigned long n_address;
 	char map_to[] = "0123456789abcdef";
 	void *addrs = va_arg(args, void *);
 
@@ -29,12 +29,12 @@ int print_pointer(va_list args, char buffer[],
 	buffer[BUFF_SIZE - 1] = '\0';
 	UNUSED(precision);
 
-	n_addrs = (unsigned long)addrs;
+	n_address = (unsigned long)addrs;
 
-	while (n_addrs > 0)
+	while (n_address > 0)
 	{
-		buffer[ind--] = map_to[n_addrs % 16];
-		n_addrs /= 16;
+		buffer[index--] = map_to[n_address % 16];
+		n_address /= 16;
 		length++;
 	}
 
@@ -45,23 +45,23 @@ int print_pointer(va_list args, char buffer[],
 	else if (flags & F_SPACE)
 		plus_c = ' ', length++;
 
-	ind++;
+	index++;
 
-	/*return (write(1, &buffer[y], BUFF_SIZE - y - 1));*/
-	return (write_pointer(buffer, ind, length,
+	/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
+	return (publish_pointer(buffer, index, length,
 		width, flags, lado, plus_c, lado_start));
 }
 
 /************************* PRINT NON PRINTABLE *************************/
 /**
- * print_non_printable - prints ascii codes in hexa of non printable chars
- * @args: list of arguments
- * @buffer: buffer array to handle print
+ * print_non_printable - Prints ascii codes in hexa of non printable chrs
+ * @args: Lista of arguments
+ * @buffer: Buffer array to handle print
  * @flags:  calc active flags
  * @width: find width
- * @precision: precision specification
- * @size: size specifier
- * Return: Number of chars printed
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chrs printed
  */
 int print_non_printable(va_list args, char buffer[],
 	int flags, int width, int precision, int size)
@@ -77,7 +77,7 @@ int print_non_printable(va_list args, char buffer[],
 	if (str == NULL)
 		return (write(1, "(null)", 6));
 
-	while (str[y] != '\0')
+	while (str[i] != '\0')
 	{
 		if (is_printable(str[y]))
 			buffer[y + offset] = str[y];
@@ -94,14 +94,14 @@ int print_non_printable(va_list args, char buffer[],
 
 /************************* PRINT REVERSE *************************/
 /**
- * print_reverse - prints reverse string.
- * @args: list of arguments
- * @buffer: buffer array to handle print
- * @flags: calc active flags
+ * print_reverse - Prints reverse string.
+ * @args: Lista of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  calc active flags
  * @width: find width
- * @precision: precision specification
- * @size: size specifier
- * Return: Numbers of chars printed
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Numbers of chrs printed
  */
 
 int print_reverse(va_list args, char buffer[],
@@ -137,14 +137,14 @@ int print_reverse(va_list args, char buffer[],
 }
 /************************* PRINT A STRING IN ROT13 *************************/
 /**
- * print_rot13string - print a string in rot13.
- * @args: list of arguments
- * @buffer: buffer array to handle print
+ * print_rot13string - Print a string in rot13.
+ * @args: Lista of arguments
+ * @buffer: Buffer array to handle print
  * @flags:  calc active flags
  * @width: find width
- * @precision: precision specification
- * @size: size specifier
- * Return: Numbers of chars printed
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Numbers of chrs printed
  */
 int print_rot13string(va_list args, char buffer[],
 	int flags, int width, int precision, int size)

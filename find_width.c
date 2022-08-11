@@ -2,7 +2,7 @@
 
 /**
  * find_width - calcs the width for printing
- * @sett: formatted string in which to print the arguments.
+ * @sett: settted string in which to print the arguments.
  * @y: list of arguments to be printed.
  * @list: list of arguments.
  *
@@ -10,19 +10,19 @@
  */
 int find_width(const char *sett, int *y, va_list list)
 {
-	int preset_i;
+	int preset;
 	int width = 0;
 
-	for (preset_i = *y + 1; sett[preset_i] != '\0'; preset_i++)
+	for (preset = *y + 1; sett[preset] != '\0'; preset++)
 	{
-		if (is_numb(sett[preset_i]))
+		if (is_intiga(sett[preset]))
 		{
 			width *= 10;
-			width += sett[preset_i] - '0';
+			width += sett[preset] - '0';
 		}
-		else if (sett[preset_i] == '*')
+		else if (sett[preset] == '*')
 		{
-			preset_i++;
+			preset++;
 			width = va_arg(list, int);
 			break;
 		}
@@ -30,7 +30,7 @@ int find_width(const char *sett, int *y, va_list list)
 			break;
 	}
 
-	*y = preset_i - 1;
+	*y = preset - 1;
 
 	return (width);
 }

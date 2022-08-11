@@ -1,26 +1,26 @@
 #include "main.h"
 
 /**
- * find_size - calculates the size to cast the args
- * @sett: formatted string in which to print the args
- * @y: list of arguments to be printed.
+ * find_size - calcs the size to cast the argument
+ * @sett: settted string in which to print the arguments
+ * @y: List of arguments to be printed.
  *
  * Return: Precision.
  */
 int find_size(const char *sett, int *y)
 {
-	int preset_i = *y + 1;
+	int preset = *y + 1;
 	int size = 0;
 
-	if (sett[preset_i] == 'l')
+	if (sett[preset] == 'l')
 		size = S_LONG;
-	else if (sett[preset_i] == 'h')
+	else if (sett[preset] == 'h')
 		size = S_SHORT;
 
 	if (size == 0)
-		*y = preset_i - 1;
+		*y = preset - 1;
 	else
-		*y = preset_i;
+		*y = preset;
 
 	return (size);
 }
